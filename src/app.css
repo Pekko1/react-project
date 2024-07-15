@@ -64,6 +64,14 @@ button:hover {
     background-color: #45a049;
 }
 
+.loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    font-size: 1.5rem;
+}
+
 .result-container {
     display: flex;
     justify-content: space-evenly;
@@ -77,6 +85,10 @@ button:hover {
     padding: 16px;
     max-width: 300px;
     text-align: center;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center; */
     background-color: rgb(254, 239, 239);
 }
 
@@ -140,4 +152,20 @@ button:hover {
 
 .back-link:hover {
     text-decoration: underline;
+}
+
+.error-message {
+    padding: 10px;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+    margin-top: 20px;
+    border-radius: 4px;
+}
+
+.testing:hover{
+    font-size: 18px;
+    background-color: rgba(255, 255, 255, 0.479);
+    padding: 3px;
+    border-radius: 2px;
 }
