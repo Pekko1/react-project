@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 function RecipeDetails() {
     const [recipeDetails, setRecipeDetails] = useState(null);
@@ -40,19 +41,28 @@ function RecipeDetails() {
     const parsedDescription = parseHTMLText(recipeDetails.summary);
 
     return (
-        <div className="recipe-details">
-            <Link to="/" className="back-link">&lt; Back</Link>
-            <h1>{recipeDetails.title}</h1>
-            <img src={recipeDetails.image} alt={recipeDetails.title} />
-            <h2>Ingredients:</h2>
-            <ul>
-                {recipeDetails.extendedIngredients.map(ingredient => (
-                    <li key={ingredient.id}>{ingredient.original}</li>
-                ))}
-            </ul>
-            <h2>Instructions:</h2>
-            <p>{parsedDescription}</p>
-        </div>
+        <>
+            <Helmet>
+                <title>{recipeDetails.title} - Vegetarian Recipes</title>
+                <meta name="description" content={parsedDescription} />
+                <meta property="og:title" content={recipeDetails.title} />
+                <meta property="og:description" content={parsedDescription} />
+                <meta property="og:image" content={recipeDetails.image} />
+            </Helmet>
+            <div className="recipe-details">
+                <Link to="/" className="back-link">&lt; Back</Link>
+                <h1>{recipeDetails.title}</h1>
+                <img src={recipeDetails.image} alt={recipeDetails.title} />
+                <h2>Ingredients:</h2>
+                <ul>
+                    {recipeDetails.extendedIngredients.map(ingredient => (
+                        <li key={ingredient.id}>{ingredient.original}</li>
+                    ))}
+                </ul>
+                <h2>Instructions:</h2>
+                <p>{parsedDescription}</p>
+            </div>
+        </>
     );
 }
 
