@@ -7,10 +7,14 @@ function Home(){
     
     const [query,setQuery] = useState("")
     const [recipes, setRecipes] = useState([])
+    const [loading, setLoading] = useState(false)
+    const [error, setError] = useState(null)
 
     async function search(){
         console.log(`searched ${query}`)  //test
         setQuery("")
+        setLoading(true)
+        setError(null)
 
         const apiKey = import.meta.env.VITE_API_KEY;
 
@@ -22,10 +26,19 @@ function Home(){
                     apiKey: apiKey
                 }
             })
-            setRecipes(response.data.results)
-            console.log(recipes) //test
+
+            if(response.data.results.length===0){
+                setRecipes([])
+                console.log(recipes) //test
+            }else{
+                setRecipes(response.data.results)
+            }
+
         }catch(error){
             console.error('Error fetching data from Spoonacular API:', error);
+            setError("Error fetching data. Please try again later.")
+        } finally{
+            setLoading(false)
         }
     }
 
@@ -42,13 +55,27 @@ function Home(){
                 <button onClick={search}>Search</button>
             </div>
 
-            <div className="result-container">
-                {recipes.map(recipe => (
-                    <RecipeCard key={recipe.id} recipe={recipe} />
-                ))}
-            </div>
+            {loading ? (
+                <div className="loader">Loading...</div>
+            ) : (
+                <>
+                    {error ? (
+                        <div className="error-message">{error}</div>
+                    ) : (
+                        <div className="result-container">
+                            {recipes.length > 0 ? (
+                                recipes.map(recipe => (
+                                    <RecipeCard key={recipe.id} recipe={recipe} />
+                                ))
+                            ) : (
+                                <div className="error-message">No results found</div>
+                            )}
+                        </div>
+                    )}
+                </>
+            )}
         </>
-    )
+    );
 }
 
 export default Home
