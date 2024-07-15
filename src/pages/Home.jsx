@@ -9,12 +9,14 @@ function Home(){
     const [recipes, setRecipes] = useState([])
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(null)
+    const [test, setTest] = useState(true)
 
     async function search(){
         console.log(`searched ${query}`)  //test
         setQuery("")
         setLoading(true)
         setError(null)
+        setTest(false)
 
         const apiKey = import.meta.env.VITE_API_KEY;
 
@@ -68,7 +70,7 @@ function Home(){
                                     <RecipeCard key={recipe.id} recipe={recipe} />
                                 ))
                             ) : (
-                                <div className="error-message">No results found</div>
+                                !test && <div className="error-message">No results found</div>
                             )}
                         </div>
                     )}
