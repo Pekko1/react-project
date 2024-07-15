@@ -7,14 +7,14 @@ function RecipeDetails() {
     const { id } = useParams();
 
     useEffect(() => {
-        const API_KEY = "e20dced93c574082ba587f212c97a473";
+        const apiKey = import.meta.env.VITE_API_KEY;
 
         async function fetchRecipeDetails() {
             try {
                 if (!id) return;
                 const response = await axios.get(`https://api.spoonacular.com/recipes/${id}/information`, {
                     params: {
-                        apiKey: API_KEY
+                        apiKey: apiKey
                     }
                 });
                 setRecipeDetails(response.data);

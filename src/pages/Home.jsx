@@ -12,14 +12,14 @@ function Home(){
         console.log(`searched ${query}`)  //test
         setQuery("")
 
-        const API_KEY = "e20dced93c574082ba587f212c97a473"
+        const apiKey = import.meta.env.VITE_API_KEY;
 
         try{
             const response = await axios.get("https://api.spoonacular.com/recipes/complexSearch",{
                 params:{
                     query:query,
                     diet: "vegan",
-                    apiKey: API_KEY
+                    apiKey: apiKey
                 }
             })
             setRecipes(response.data.results)
