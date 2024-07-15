@@ -7,7 +7,7 @@ function RecipeDetails() {
     const { id } = useParams();
 
     useEffect(() => {
-        const API_KEY = "";
+        const API_KEY = "e20dced93c574082ba587f212c97a473";
 
         async function fetchRecipeDetails() {
             try {

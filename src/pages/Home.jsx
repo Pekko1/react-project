@@ -1,7 +1,7 @@
 import { useState } from "react"
 import axios from "axios"
 
-import RecipeCard from "./RecipeCard"
+import RecipeCard from "../components/RecipeCard"
 
 function Home(){
     
@@ -12,7 +12,7 @@ function Home(){
         console.log(`searched ${query}`)  //test
         setQuery("")
 
-        const API_KEY = ""
+        const API_KEY = "e20dced93c574082ba587f212c97a473"
 
         try{
             const response = await axios.get("https://api.spoonacular.com/recipes/complexSearch",{

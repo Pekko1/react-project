@@ -1,6 +1,6 @@
 
-import Home from "./components/Home"
-import RecipeDetails from "./components/RecipeDetails"
+import Home from "./pages/Home"
+import RecipeDetails from "./pages/RecipeDetails"
 import "./app.css"
 import { BrowserRouter as Router, Route, Routes} from "react-router-dom"
 
