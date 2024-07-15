@@ -7,7 +7,7 @@ function RecipeCard(props) {
         <div className="recipe-card">
             <h2>{props.recipe.title}</h2>
             <img src={props.recipe.image} alt={props.recipe.title} />
-            <Link to={`/recipe/${props.recipe.id}`}>View Details</Link>
+            <Link to={`/recipe/${props.recipe.id}`} className="testing">View Details</Link>
         </div>
     );
 }
