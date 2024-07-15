@@ -14,7 +14,7 @@ React Veggie Search is a web application that allows users to search for vegetab
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/Pekko1/new-react-project.git
+    git clone https://github.com/Pekko1/react-project.git
     ```
 2. Navigate to the project directory:
     ```bash
